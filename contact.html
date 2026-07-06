@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Concept Horizontals</title>
+  <meta name="description" content="Start a conversation with Concept Horizontals about your growth agenda." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Barlow:wght@300;400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="index.html"><span class="wm-top">conce<span class="big-p">P</span>t</span><span class="wm-bottom">Horizontals</span></a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="main-nav" id="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="page-intro on-dark">
+      <div class="container">
+        <div class="horizon"><span class="eyebrow">Contact</span></div>
+        <h1>Start a conversation.</h1>
+        <p class="lede">Most engagements begin the same way — a straightforward discussion about where your growth is stuck and whether we're the right partner to unstick it. No decks, no obligation.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contact-grid">
+
+        <!--
+          FORM SETUP NOTE FOR ATUL:
+          This form needs a form-handling service to actually send messages.
+          Free option: https://formspree.io — create a free account, create a
+          form, and replace YOUR_FORM_ID in the action attribute below with
+          the ID Formspree gives you. Nothing else needs to change.
+        -->
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required autocomplete="name" />
+          </div>
+          <div class="form-field">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company" autocomplete="organization" />
+          </div>
+          <div class="form-field">
+            <label for="role">Role</label>
+            <input type="text" id="role" name="role" autocomplete="organization-title" />
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required autocomplete="email" />
+          </div>
+          <div class="form-field">
+            <label for="message">What would you like to discuss?</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+          </div>
+          <button class="btn btn--solid" type="submit">Send Message</button>
+        </form>
+
+        <aside class="direct-channels">
+          <h3>Direct channels</h3>
+          <p><span class="chan">Email</span> hello@concepthorizontals.com</p>
+          <p><span class="chan">LinkedIn</span> <a href="#" rel="noopener">Connect on LinkedIn</a></p>
+          <p><span class="chan">Based in</span> India · Working with clients nationwide</p>
+        </aside>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a class="wordmark" href="index.html"><span class="wm-top">conce<span class="big-p">P</span>t</span><span class="wm-bottom">Horizontals</span><span class="wm-tagline">Building Materials · Advisory · Consulting</span></a>
+      <nav class="footer-nav" aria-label="Footer">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </nav>
+      <p class="copyright">© 2026 Concept Horizontals. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
