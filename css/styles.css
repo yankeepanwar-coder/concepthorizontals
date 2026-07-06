@@ -1,0 +1,670 @@
+/* ============================================================
+   CONCEPT HORIZONTALS — styles.css
+   Palette:  charcoal / ivory / amber
+   Type:     Barlow Condensed (display & labels) + Source Serif 4 (body)
+   Signature: the amber "horizon line" — a thin horizontal rule
+              that anchors every section, echoing the firm's name.
+   ============================================================ */
+
+:root {
+  /* Official brand tokens — from the concePt Horizontals logo set (Option B) */
+  --charcoal:    #1C1C1E;  /* dark surfaces */
+  --charcoal-2:  #29292C;  /* raised dark surface */
+  --ivory:       #FAF7F2;  /* main light background */
+  --ivory-2:     #EFECE6;  /* alternate light band */
+  --amber:       #C8761A;  /* primary accent on light: buttons, links */
+  --amber-light: #E8B96A;  /* accent on dark: stats, the P, horizon lines */
+  --amber-deep:  #A85F12;  /* hover / borders on light */
+  --ink:         #262522;  /* body text on ivory */
+  --stone:       #4A4A4C;  /* muted captions on ivory (charcoal-dim) */
+  --stone-dark:  #D4CFC8;  /* muted captions on charcoal (ivory-dim) */
+
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-body: "Source Serif 4", Georgia, serif;
+
+  --max-w: 1120px;
+  --pad-x: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1.075rem;
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--ivory);
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; }
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 3px;
+}
+
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding-left: var(--pad-x);
+  padding-right: var(--pad-x);
+}
+
+/* ---------- Wordmark (official stacked lockup) ---------- */
+.wordmark {
+  display: inline-flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  text-decoration: none;
+  color: var(--ivory);
+  line-height: 1;
+}
+.wordmark .wm-top {
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.05em;
+}
+.wordmark .big-p {
+  color: var(--amber-light);
+  font-size: 1.32em;
+  font-weight: 800;
+  line-height: 0;
+  vertical-align: -0.05em;
+}
+.wordmark .wm-bottom {
+  font-weight: 800;
+  font-size: 0.68rem;
+  letter-spacing: 0.52em;
+  text-transform: uppercase;
+  margin-top: 0.28rem;
+  color: inherit;
+}
+.wordmark .wm-tagline {
+  font-family: "Barlow", var(--font-body);
+  font-weight: 300;
+  font-size: 0.62rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  margin-top: 0.45rem;
+  color: var(--stone-dark);
+}
+
+/* ---------- Header / Nav ---------- */
+.site-header {
+  background: var(--charcoal);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid rgba(244, 239, 228, 0.08);
+}
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
+}
+.main-nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.main-nav a {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.02rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--stone-dark);
+  padding: 0.4rem 0;
+  border-bottom: 2px solid transparent;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+.main-nav a:hover { color: var(--ivory); }
+.main-nav a[aria-current="page"] {
+  color: var(--ivory);
+  border-bottom-color: var(--amber-light);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid rgba(244, 239, 228, 0.3);
+  color: var(--ivory);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+}
+
+@media (max-width: 760px) {
+  .nav-toggle { display: block; }
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: 72px; left: 0; right: 0;
+    background: var(--charcoal-2);
+    border-bottom: 2px solid var(--amber-light);
+  }
+  .main-nav.open { display: block; }
+  .main-nav ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 0.5rem 0 1rem;
+  }
+  .main-nav li { padding: 0 var(--pad-x); }
+  .main-nav a { display: block; padding: 0.8rem 0; border-bottom: none; }
+  .main-nav a[aria-current="page"] { color: var(--amber-light); }
+}
+
+/* ---------- Horizon rule (signature) ---------- */
+.horizon {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 1.1rem;
+}
+.horizon::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(to right, var(--amber), transparent 85%);
+}
+.eyebrow {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--amber-deep);
+  white-space: nowrap;
+}
+.on-dark .eyebrow { color: var(--amber-light); }
+.on-dark .horizon::after { background: linear-gradient(to right, var(--amber-light), transparent 85%); }
+
+/* ---------- Headings ---------- */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: 0.005em;
+  color: var(--charcoal);
+}
+.on-dark h1, .on-dark h2, .on-dark h3 { color: var(--ivory); }
+
+h1 { font-size: clamp(2.7rem, 6.5vw, 4.6rem); }
+h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); margin-bottom: 1.2rem; }
+h3 { font-size: 1.45rem; margin-bottom: 0.5rem; }
+
+.lede {
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  line-height: 1.6;
+  max-width: 46ch;
+}
+
+/* ---------- Sections ---------- */
+.section { padding: clamp(3.5rem, 8vw, 6rem) 0; }
+.section--alt { background: var(--ivory-2); }
+.section--dark { background: var(--charcoal); color: var(--ivory); }
+.section--dark p { color: #d9d2c2; }
+
+/* ---------- Hero ---------- */
+.hero {
+  background: var(--charcoal);
+  color: var(--ivory);
+  padding: clamp(4.5rem, 11vw, 8.5rem) 0 clamp(3.5rem, 8vw, 6rem);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  /* faint oversized P watermark, echoing the wordmark */
+  content: "P";
+  position: absolute;
+  right: -0.05em;
+  bottom: -0.32em;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(18rem, 42vw, 34rem);
+  line-height: 1;
+  color: rgba(232, 185, 106, 0.07);
+  pointer-events: none;
+}
+.hero .container { position: relative; }
+.hero h1 { max-width: 15ch; margin: 0.8rem 0 1.4rem; }
+.hero .lede { color: #d9d2c2; margin-bottom: 2.4rem; }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.85rem 1.8rem;
+  border: 2px solid var(--amber);
+  transition: background 160ms ease, color 160ms ease;
+  cursor: pointer;
+}
+.on-dark .btn--ghost { border-color: var(--amber-light); }
+.on-dark .btn--solid { background: var(--amber-light); border-color: var(--amber-light); }
+.btn--solid { background: var(--amber); color: var(--charcoal); }
+.btn--solid:hover { background: var(--ivory); border-color: var(--ivory); }
+.btn--ghost { background: transparent; color: var(--ivory); }
+.btn--ghost:hover { background: rgba(232, 185, 106, 0.15); }
+.btn--ghost-dark { background: transparent; color: var(--charcoal); border-color: var(--amber-deep); }
+.btn--ghost-dark:hover { background: var(--amber); color: var(--charcoal); }
+
+/* ---------- Proof strip ---------- */
+.proof-strip {
+  background: var(--charcoal-2);
+  border-top: 1px solid rgba(232, 185, 106, 0.35);
+  padding: 2.4rem 0 1.9rem;
+}
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.8rem 2.2rem;
+}
+.stat .num {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.1rem, 4vw, 2.9rem);
+  line-height: 1.05;
+  color: var(--amber-light);
+}
+.stat .label {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--stone-dark);
+}
+.proof-caption {
+  margin-top: 1.6rem;
+  font-size: 0.95rem;
+  color: var(--stone-dark);
+  font-style: italic;
+}
+
+/* ---------- Card grids ---------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.4rem;
+  margin-top: 2.4rem;
+}
+.card {
+  background: var(--ivory);
+  border: 1px solid #DDD8CF;
+  border-top: 3px solid var(--amber);
+  padding: 1.6rem 1.5rem 1.5rem;
+  text-decoration: none;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+a.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(34, 32, 28, 0.10);
+}
+.card p { font-size: 1rem; color: var(--stone); }
+.card h3 { color: var(--charcoal); }
+
+/* ---------- Two-column split ---------- */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+}
+@media (max-width: 820px) { .split { grid-template-columns: 1fr; } }
+
+/* ---------- Audience list ---------- */
+.audience { list-style: none; margin-top: 1.8rem; }
+.audience li {
+  padding: 1.3rem 0;
+  border-top: 1px solid #DDD8CF;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.2rem;
+}
+.audience li:last-child { border-bottom: 1px solid #DDD8CF; }
+.audience .who {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--charcoal);
+  min-width: 15ch;
+}
+@media (max-width: 640px) { .audience li { grid-template-columns: 1fr; gap: 0.3rem; } }
+
+/* ---------- CTA band ---------- */
+.cta-band { text-align: left; }
+.cta-band h2 { max-width: 22ch; }
+.cta-band .btn { margin-top: 1.4rem; }
+
+/* ---------- Services page ---------- */
+.service {
+  padding: clamp(2.4rem, 5vw, 3.4rem) 0;
+  border-top: 1px solid #DDD8CF;
+}
+.service:first-of-type { border-top: none; }
+.service h3 {
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  margin-bottom: 0.9rem;
+}
+.service .outcomes {
+  margin-top: 1.1rem;
+  padding: 1rem 1.3rem;
+  background: var(--ivory-2);
+  border-left: 3px solid var(--amber);
+  font-size: 1rem;
+}
+.service .outcomes strong {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: var(--amber-deep);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+/* ---------- Prose (about, article) ---------- */
+.prose { max-width: 68ch; }
+.prose p { margin-bottom: 1.3rem; }
+.prose h2 { margin-top: 2.6rem; }
+.prose ul { margin: 0 0 1.3rem 1.3rem; }
+.prose li { margin-bottom: 0.5rem; }
+
+/* ---------- Insights ---------- */
+.article-card {
+  display: block;
+  background: var(--ivory);
+  border: 1px solid #DDD8CF;
+  border-left: 4px solid var(--amber);
+  padding: 1.8rem 1.8rem 1.6rem;
+  text-decoration: none;
+  max-width: 760px;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+.article-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(34, 32, 28, 0.10);
+}
+.article-card .pillar {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.88rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--amber-deep);
+}
+.article-card h3 { margin: 0.5rem 0 0.6rem; font-size: 1.6rem; }
+.article-card p { color: var(--stone); font-size: 1.02rem; }
+.read-more {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  color: var(--amber-deep);
+}
+
+.article-meta {
+  font-family: var(--font-display);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.92rem;
+  color: var(--stone);
+  margin-bottom: 2rem;
+}
+
+/* ---------- Contact ---------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  margin-top: 2.4rem;
+}
+@media (max-width: 820px) { .contact-grid { grid-template-columns: 1fr; } }
+
+.form-field { margin-bottom: 1.2rem; }
+.form-field label {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: var(--charcoal);
+  margin-bottom: 0.35rem;
+}
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.75rem 0.9rem;
+  background: var(--ivory);
+  border: 1px solid #C7C1B6;
+  color: var(--ink);
+}
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: 3px solid var(--amber);
+  outline-offset: 0;
+  border-color: var(--amber);
+}
+
+.direct-channels {
+  border-top: 3px solid var(--amber);
+  background: var(--ivory-2);
+  padding: 1.8rem 1.6rem;
+}
+.direct-channels h3 { margin-bottom: 1rem; }
+.direct-channels p { margin-bottom: 0.9rem; font-size: 1rem; }
+.direct-channels .chan {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.88rem;
+  color: var(--amber-deep);
+  display: block;
+}
+
+/* ---------- Page intro banner (inner pages) ---------- */
+.page-intro {
+  background: var(--charcoal);
+  color: var(--ivory);
+  padding: clamp(3.2rem, 7vw, 5rem) 0;
+}
+.page-intro h1 { font-size: clamp(2.3rem, 5vw, 3.6rem); max-width: 18ch; margin-top: 0.8rem; }
+.page-intro .lede { color: #d9d2c2; margin-top: 1.2rem; }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--charcoal);
+  color: var(--stone-dark);
+  padding: 2.6rem 0;
+  border-top: 2px solid var(--amber-light);
+}
+.site-footer .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.4rem;
+}
+.footer-nav ul { display: flex; flex-wrap: wrap; gap: 1.4rem; list-style: none; }
+.footer-nav a {
+  font-family: var(--font-display);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.92rem;
+  text-decoration: none;
+  color: var(--stone-dark);
+}
+.footer-nav a:hover { color: var(--ivory); }
+.site-footer .copyright { font-size: 0.9rem; width: 100%; }
+
+
+/* ============================================================
+   PERSUASION UPGRADES
+   ============================================================ */
+
+/* ---------- Hero horizon lines (signature graphic) ---------- */
+.hero-horizons {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 90px;
+  pointer-events: none;
+}
+.hero-horizons span {
+  position: absolute;
+  left: 0;
+  height: 1px;
+  background: linear-gradient(to right, var(--amber-light), transparent);
+}
+.hero-horizons span:nth-child(1) { bottom: 64px; width: 34%; opacity: 0.5; }
+.hero-horizons span:nth-child(2) { bottom: 46px; width: 52%; opacity: 0.4; }
+.hero-horizons span:nth-child(3) { bottom: 28px; width: 72%; opacity: 0.3; }
+.hero-horizons span:nth-child(4) { bottom: 10px; width: 100%; opacity: 0.22; }
+
+/* ---------- Institutions trust strip ---------- */
+.brand-strip {
+  background: var(--ivory-2);
+  border-bottom: 1px solid #DDD8CF;
+  padding: 1.6rem 0;
+}
+.brand-strip .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6rem 1.4rem;
+}
+.brand-strip .strip-label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber-deep);
+  margin-right: 0.6rem;
+}
+.brand-strip .inst {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.06rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--stone);
+  white-space: nowrap;
+}
+.brand-strip .dot { color: var(--amber); }
+
+/* ---------- TRUFLO growth chart band ---------- */
+.growth-band { position: relative; }
+.growth-band .split { align-items: center; }
+.growth-chart { width: 100%; height: auto; display: block; }
+.growth-chart .axis { stroke: rgba(212, 207, 200, 0.25); stroke-width: 1; }
+.growth-chart .curve {
+  fill: none;
+  stroke: var(--amber-light);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.growth-chart .fill { fill: url(#growthFill); }
+.growth-chart .chart-label {
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  fill: var(--stone-dark);
+}
+.growth-chart .chart-num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 30px;
+  fill: var(--amber-light);
+}
+.growth-chart .marker { fill: var(--amber-light); }
+
+/* Draw-in animation for the curve */
+@keyframes drawCurve { to { stroke-dashoffset: 0; } }
+.growth-chart .curve {
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+}
+.in-view .growth-chart .curve {
+  animation: drawCurve 1.8s ease-out forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .growth-chart .curve { stroke-dasharray: none; stroke-dashoffset: 0; }
+}
+
+/* ---------- Scroll reveal ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+}
+
+
+/* ---------- Credential lines under proof strip ---------- */
+.cred-lines {
+  margin-top: 1.8rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem 2.4rem;
+  border-top: 1px solid rgba(212, 207, 200, 0.15);
+  padding-top: 1.5rem;
+}
+@media (max-width: 760px) { .cred-lines { grid-template-columns: 1fr; } }
+.cred {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--stone-dark);
+}
+.cred-lead {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--amber-light);
+  margin-bottom: 0.3rem;
+}
+
+
+/* ---------- Secondary line inside a stat cell ---------- */
+.stat .sub-label {
+  display: block;
+  margin-top: 0.55rem;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--stone-dark);
+}
